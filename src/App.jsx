@@ -2,6 +2,7 @@ import Navbar from "./sections/header/navbar";
 import Hero from "./sections/header/hero.jsx";
 import ItTerminlar from "./sections/It_ter/ItTerminlar.jsx";
 import Footer from "./sections/footer/Footer.jsx";
+import ScrollToTop from './ScrollToTop.jsx' 
 
 export default function App() {
   return (

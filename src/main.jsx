@@ -2,12 +2,11 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
-import Navbar from './sections/header/navbar.jsx'
-import hero from './sections/header/hero.jsx'
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import CardDetail from './pages/CardDetail.jsx';
 
 const router = createBrowserRouter([
   {
@@ -15,6 +14,12 @@ const router = createBrowserRouter([
     element: <App/>,
     
   },
+  // <Route path="/card/:id" element={<CardDetail />} />
+  {
+    path: "/card/:id",
+    element: <CardDetail/>
+  },
+
 ]);
 
 
@@ -23,3 +28,4 @@ createRoot(document.getElementById('root')).render(
     <RouterProvider router={router} />
   </StrictMode>,
 )
+
