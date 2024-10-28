@@ -22,3 +22,33 @@
   
   color: #02c37e !important;
 }
+.detail__back-btn button {
+    display: flex;
+    height: 3em;
+    width: 100px;
+    align-items: center;
+    justify-content: center;
+    background-color: #02c37e;
+    border-radius: 40px;
+    letter-spacing: 1px;
+    transition: all 0.2s linear;
+    cursor: pointer;
+    border: none;
+    background: #fff;
+}
+.detail__back-btn  button > svg {
+  margin-right: 5px;
+  margin-left: 5px;
+  font-size: 20px;
+  transition: all 0.4s ease-in;
+ }
+ .detail__back-btn button:hover > svg {
+  font-size: 1.2em;
+  transform: translateX(-5px);
+ }
+ .detail__back-btn button:hover {
+  box-shadow: 9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff;
+  transform: translateY(-2px);
+ }
+ 
+
