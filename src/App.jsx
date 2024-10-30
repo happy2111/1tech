@@ -9,7 +9,7 @@ export default function App() {
     <div>
       <div className="wrapper">
           <div className="md:h-lvh" style={{overflowX:"initial !important"}}>
-            <section  className="sm:rounded-full overflow-x-hidden fixed w-full top-0 z-50 ">
+            <section  className="sm:rounded-full fixed w-full top-0 z-50ж ">
               <Navbar />
             </section>
             <section id="home" >
