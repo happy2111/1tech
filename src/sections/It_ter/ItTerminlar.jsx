@@ -35,10 +35,10 @@ function ItTerminlar() {
                 <p className='text-white lg:text-left text-center text-[20px] lg:w-[792.2px] md:w-[500px] w-[300px] '>IT terminlarni o‘rganish axborot texnologiyalari sohasida ishlashni osonlashtiradi, chunki ular orqali professional terminologiyani tushunish va undan samarali foydalanish mumkin bo‘ladi.</p>
                 <h1 className='lg:text-left text-center font-bold md:text-[35px] text-[27px] mt-[60px] text-[#1dcd8d]'>{add_text}</h1>
             </div>  
-            <div className='flex flex-wrap lg:justify-between justify-evenly lg:mt-[30px] mt-[50px]'>
+            <div className='flex flex-wrap lg:justify-between justify-evenly lg:mt-[30px] mt-[50px] md:p-0 px-[30px]'>
                 {data.slice(0, 3).map((item, index, card) => (
                     <div key={item.id} className='mb-[40px] w-[367.1px] h-[320.2px] rounded-[40px] p-[30px] overflow-hidden  bg-[#737678] '>
-                        <img className='h-[73.6px] '  src={item.image} alt="icon" />
+                        <img className='h-[73.6px] ml-[-20px]'  src={icon} alt="icon" />
                         <h1 className='text-[25px] font-bold text-[#1dcd8d] mt-[11px]'>
                             {item.title}
                         </h1>

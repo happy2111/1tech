@@ -108,7 +108,7 @@ function CardDetail() {
                     className="mySwiper "
             >
                 {data2.map((item, index, card) => (
-                    <SwiperSlide key={item.id} className='mb-[40px] w-[340px] min-h-[300.2px] rounded-[40px] p-[30px] overflow-hidden  bg-[#737678] '>
+                    <SwiperSlide key={item.id} className='mb-[40px] w-[340px] min-h-[270.2px] rounded-[40px] p-[30px] overflow-hidden  bg-[#737678] '>
                         {/* <img className='h-[73.6px] '  src={item.icon} alt="icon" /> */}
                         <div className=''>
                           <div>
