@@ -3,6 +3,9 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { CiSearch } from "react-icons/ci";
 import { useState, useEffect } from 'react';
 import { Link } from 'react-scroll'
+import SearchBar from '../../components/SearchBar';
+import SearchResultList from '../../components/SearchResultList';
+import logo from '../../assets/logo.png'
  
 const navigation = [
   { name: 'Home', href: 'home', current: true },
@@ -36,7 +39,7 @@ export default function Navbar() {
 
   // console.log(data);
   
-  
+  const [ results, setResults ] = useState([]);
 
   return (
     <Disclosure as="nav" className="md:bg-transparent bg-[#02c37e] md:px-8 lg:p-0">
@@ -54,18 +57,24 @@ export default function Navbar() {
           
           <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start  ">
             {/* Logo  */}
-            <div className="flex flex-shrink-0 items-center md:static  absolute right-0">
+            <div id='logo' className="flex flex-col flex-shrink-0 items-center md:static w-[111px]  absolute right-0">
               <img
                 alt="Your Company"
-                src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500"
-                className="h-8 w-auto"
+                src={logo}
+                
+                className="md:w-[90px] md:h-[90px] lg:w-[111.6px] lg:h-[111.6px]  absolute left-1 rounded-full overflow-hidden border-[black] border-2 p-4 bg-white"
               />
+
             </div>
             {/* Logo-end  */}
             {/* search  */}
-            <div className='rounded-full md:ml-[69px] h-[39.8px] px-5 bg-white overflow-hidden  flex items-center '>
-                <input onChange={(e) => setSearch(e.target.value)} className='focus:outline-none lg:w-[456px] border-none' type="text"  name="search" placeholder='Qidiruv...' />
-                <button><a href=""><CiSearch /></a></button>   
+            <div className='relative rounded-full md:ml-[30px] h-[39.8px] px-5 bg-white overflow-hidden lg:ml-[69px]   flex items-center '>
+                <SearchBar setResults={setResults}/>
+                {/* <input onChange={(e) => setSearch(e.target.value)} className='focus:outline-none lg:w-[456px] border-none' type="text"  name="search" placeholder='Qidiruv...' /> */}
+                {/* <button><a href=""><CiSearch /></a></button>    */}
+            </div>
+            <div>
+             <SearchResultList results={results}/>
             </div>
             {/* search-ends  */}
             <div className="hidden sm:ml-auto sm:block">

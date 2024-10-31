@@ -3,6 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 /* From Uiverse.io by adamgiebl */ 
 .dots-container {
   display: flex;
@@ -105,4 +106,41 @@
   transform: translateY(-2px);
  }
  
+#logo::after {
+  content: "1tech.uz";
+  position: absolute;
+  color: black;
+  top: 125px;
+  left: 27px;
+  font-weight: bold;
+}
+@media (max-width: 820px) {
+  #logo::after {
+    content: "1tech.uz";
+    position: absolute;
+    color: black;
+    top: 100px;
+    left: 15px;
+    font-weight: bold;
+  }
+}
+@media (max-width: 450px) {
+  #logo::after {
+    content: "";
+    position: absolute;
+    color: black;
+    top: 100px;
+    left: 15px;
+    font-weight: bold;
+  }
+  #logo {
+    height: 50px;
+    width: 50px;
+    right: 7px;
+  }
+  #logo img{
+    padding: 7px;
+    border: 1px solid black;
+  }
+}
 

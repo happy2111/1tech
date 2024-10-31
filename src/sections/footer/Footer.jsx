@@ -3,7 +3,7 @@ import footer_anim from "../../assets/footer_anim.gif"
 
 function Footer() {
   return (
-    <div className='h-[100vh] flex items-center lg:pb-0 pb-[50px]'>
+    <div id='footer'  className='h-[110vh] flex items-center lg:p-0 pb-[50px] '>
         <div className="container">
             <div className='flex lg:justify-between items-center lg:flex-row flex-col' >
                 <div className='lg:w-[50%]'>

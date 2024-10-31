@@ -1,0 +1,9 @@
+.link_search:first-child {
+    margin-top: 0;
+}
+.link_search:hover {
+    background: rgb(242, 242, 242);
+}
+@media only screen and (min-width: 450px) {
+    
+}

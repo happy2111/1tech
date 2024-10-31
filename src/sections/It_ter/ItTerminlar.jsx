@@ -27,7 +27,7 @@ function ItTerminlar() {
         return <p className='text-[14px] text-white'>{truncated}</p>;
       };
   return (
-    <div className='flex items-center lg:h-[100vh]'>
+    <div id='about' className='flex items-center lg:h-[100vh]'>
         
         <div className="container">
             <div className='lg:pt-[100px] pt-[76px] lg:block flex items-center flex-col'>
