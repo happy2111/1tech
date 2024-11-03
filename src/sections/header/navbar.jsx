@@ -18,6 +18,26 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
+  const [smallLogo, setSmallLogo] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setSmallLogo(true);
+      } else {
+        setSmallLogo(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []); 
+
+
+
+
   const [search, setSearch] = useState('')
   
 
@@ -41,6 +61,9 @@ export default function Navbar() {
   
   const [ results, setResults ] = useState([]);
 
+
+
+  
   return (
     <Disclosure as="nav" className="md:bg-transparent bg-[#02c37e] md:px-8 lg:p-0">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8c bg-[#02c37e] rounded-full">
@@ -57,12 +80,12 @@ export default function Navbar() {
           
           <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start  ">
             {/* Logo  */}
-            <div id='logo' className=" flex flex-col flex-shrink-0 items-center md:static w-[111px]  absolute right-0">
+            <div  className={`navbar__logo flex flex-col flex-shrink-0 items-center md:static w-[111px]  absolute right-0 ${smallLogo ? "after:content-none" : ""}`}>
               <img
                 alt="Your Company"
                 src={logo}
                 
-                className="md:w-[90px] md:h-[90px] lg:w-[111.6px] lg:h-[111.6px]  absolute left-1 rounded-full overflow-hidden border-[black] border-2 p-4 bg-white"
+                className={` absolute left-1 rounded-full overflow-hidden border-[black]  bg-white ${smallLogo ? "md:w-[55px] md:h-[55px] lg:w-[55px] lg:h-[55px] border-[1px] md:p-1 md:top-[3px]" : "border-2 p-4 md:w-[90px] md:h-[90px] lg:w-[111.6px] lg:h-[111.6px] w-[50px] h-[50px]"}`}
               />
 
             </div>

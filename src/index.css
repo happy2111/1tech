@@ -106,7 +106,7 @@
   transform: translateY(-2px);
  }
  
-#logo::after {
+.navbar__logo::after {
   content: "1tech.uz";
   position: absolute;
   color: black;
@@ -115,7 +115,7 @@
   font-weight: bold;
 }
 @media (max-width: 820px) {
-  #logo::after {
+  .navbar__logo::after {
     content: "1tech.uz";
     position: absolute;
     color: black;
@@ -125,7 +125,7 @@
   }
 }
 @media (max-width: 450px) {
-  #logo::after {
+  .navbar__logo::after {
     content: "";
     position: absolute;
     color: black;
@@ -133,12 +133,12 @@
     left: 15px;
     font-weight: bold;
   }
-  #logo {
+  .navbar__logo {
     height: 50px;
     width: 50px;
     right: 7px;
   }
-  #logo img{
+  .navbar__logo img{
     padding: 7px;
     border: 1px solid black;
   }
