@@ -57,7 +57,7 @@ export default function Navbar() {
           
           <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start  ">
             {/* Logo  */}
-            <div id='logo' className="flex flex-col flex-shrink-0 items-center md:static w-[111px]  absolute right-0">
+            <div id='logo' className=" flex flex-col flex-shrink-0 items-center md:static w-[111px]  absolute right-0">
               <img
                 alt="Your Company"
                 src={logo}
@@ -68,7 +68,7 @@ export default function Navbar() {
             </div>
             {/* Logo-end  */}
             {/* search  */}
-            <div className='relative rounded-full md:ml-[30px] h-[39.8px] px-5 bg-white overflow-hidden lg:ml-[69px]   flex items-center '>
+            <div className='relative rounded-full md:ml-[30px] h-[39.8px] px-5 bg-white overflow-hidden lg:ml-[69px] mr-[15px]  flex items-center '>
                 <SearchBar setResults={setResults}/>
                 {/* <input onChange={(e) => setSearch(e.target.value)} className='focus:outline-none lg:w-[456px] border-none' type="text"  name="search" placeholder='Qidiruv...' /> */}
                 {/* <button><a href=""><CiSearch /></a></button>    */}

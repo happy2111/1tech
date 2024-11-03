@@ -6,7 +6,7 @@ import './Search.css'
 function SearchResultList({results}) {
   return (
     <div className=''>
-        <div className='flex flex-col absolute z-50 bg-white  w-[270px] lg:w-[505px] max-h-[220px] overflow-y-scroll top-[55px] lg:left-[180px] md:left-[130px] left-[15%]  rounded-3xl shadow-lg'>
+        <div id='search_list' className='flex flex-col absolute z-50 bg-white  w-[270px] lg:w-[505px] max-h-[220px] overflow-y-scroll top-[55px] lg:left-[180px] md:left-[130px] left-[15%]  rounded-3xl shadow-lg'>
         {/* <SearchResults /> */}
         {
             results.map((item, index) => {

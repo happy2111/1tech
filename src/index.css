@@ -144,3 +144,8 @@
   }
 }
 
+@media (max-width: 377px) {
+  #search_list {
+    width: 240px !important;
+  }
+}
