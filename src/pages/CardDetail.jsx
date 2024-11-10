@@ -73,7 +73,7 @@ function CardDetail() {
   // ****swiper chenger
 
   return (
-    <div className="md:h-[110vh] bg-[#ccf3e5] pt-[28px] ">
+    <div className="md:h-[120vh] bg-[#ccf3e5] pt-[28px] ">
       <ScrollToTop />
       <div className="container">
         <Link to="../" className="detail__back-btn">
