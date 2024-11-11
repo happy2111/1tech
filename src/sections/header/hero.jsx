@@ -1,4 +1,4 @@
-import React from "react";
+ import React from "react";
 import header_anim from "../../assets/header_anim.gif";
 import { ReactTyped } from "react-typed";
 import { delay, motion, useScroll } from "framer-motion";

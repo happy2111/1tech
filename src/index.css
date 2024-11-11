@@ -107,7 +107,7 @@
  }
  
 .navbar__logo::after {
-  content: "1tech.uz";
+  content: "";
   position: absolute;
   color: black;
   top: 125px;
