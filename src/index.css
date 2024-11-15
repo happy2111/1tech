@@ -124,7 +124,7 @@
     font-weight: bold;
   }
 }
-@media (max-width: 450px) {
+@media (max-width: 480px) {
   .navbar__logo::after {
     content: "";
     position: absolute;

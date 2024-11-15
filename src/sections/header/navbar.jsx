@@ -14,6 +14,7 @@ import { Link } from "react-scroll";
 import SearchBar from "../../components/SearchBar";
 import SearchResultList from "../../components/SearchResultList";
 import logo from "../../assets/logo.png";
+import logo2 from "../../assets/logo2.png";
 
 const navigation = [
   { name: "Bosh sahifa", href: "home", current: true },
@@ -69,7 +70,7 @@ export default function Navbar() {
       as="nav"
       className="md:bg-transparent bg-[#02c37e] md:px-8 lg:p-0"
     >
-      <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8c bg-[#02c37e] rounded-full">
+      <div className="mx-auto max-w-7xl px-2 sm:px-10 lg:px-8c bg-[#02c37e] rounded-br=full rounded-b-full ">
         <div className="relative flex h-16 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
             {/* Mobile menu button*/}
@@ -99,17 +100,17 @@ export default function Navbar() {
             >
               <img
                 alt="Your Company"
-                src={logo}
+                src={logo2}
                 className={` absolute left-1 rounded-full overflow-hidden border-[black]  bg-white ${
                   smallLogo
                     ? "md:w-[55px] md:h-[55px] lg:w-[55px] lg:h-[55px] border-[1px] md:p-1 md:top-[3px]"
-                    : "border-2 p-4 md:w-[90px] md:h-[90px] lg:w-[111.6px] lg:h-[111.6px] w-[50px] h-[50px]"
+                    : "border-[1px] p-2 md:w-[90px] md:h-[90px] lg:w-[111.6px] lg:h-[111.6px] w-[50px] h-[50px]"
                 }`}
               />
             </div>
             {/* Logo-end  */}
             {/* search  */}
-            <div className="relative rounded-full md:ml-[30px] h-[39.8px] px-5 bg-white overflow-hidden lg:ml-[69px] mr-[15px]  flex items-center ">
+            <div className="relative rounded-full md:ml-[15px] h-[39.8px] px-5 bg-white overflow-hidden lg:ml-[69px] mr-[15px]  flex items-center ">
               <SearchBar setResults={setResults} />
               {/* <input onChange={(e) => setSearch(e.target.value)} className='focus:outline-none lg:w-[456px] border-none' type="text"  name="search" placeholder='Qidiruv...' /> */}
               {/* <button><a href=""><CiSearch /></a></button>    */}
@@ -130,7 +131,7 @@ export default function Navbar() {
                     aria-current={item.current ? "page" : undefined}
                     className={classNames(
                       "text-black hover:bg-[#16624e94] hover:text-white cursor-pointer	",
-                      "rounded-md px-3 py-2 text-lg font-medium cursor-pointer	"
+                      "rounded-md lg:px-3 md:px-2  py-2 lg:text-lg text-nowrap md:text-[13px] font-medium cursor-pointer	"
                     )}
                   >
                     {item.name}

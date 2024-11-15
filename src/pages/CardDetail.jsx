@@ -10,7 +10,7 @@ import "./styles.css";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-
+import { motion } from 'framer-motion' 
 function CardDetail() {
   // ****fetching
   const [data2, setData] = useState([]);
@@ -72,10 +72,29 @@ function CardDetail() {
   // }, []);
   // ****swiper chenger
 
+
+  const cardAnimation = {
+    hidden: { opacity: 0, x: -50 },
+    visible: custom => ({
+      opacity: 1,
+      x: 0,
+      // transition: {delay: custom * 0.2,type: "spring"} 
+      transition: {delay: custom * 0.4, type: "spring", stiffness: 80,}
+    }),
+  }
+  const cardAnimation2 = {
+    hidden: { opacity: 0, x: 50 },
+    visible: custom => ({
+      opacity: 1,
+      x: 0,
+      // transition: {delay: custom * 0.2,type: "spring"} 
+      transition: {delay: custom * 0.4, type: "spring", stiffness: 80,}
+    }),
+  }
   return (
     <div className="md:h-[120vh] bg-[#ccf3e5] pt-[28px] ">
       <ScrollToTop />
-      <div className="container">
+      <div className="container ">
         <Link to="../" className="detail__back-btn">
           <button className="lg:m-0 ml-[30px] mb-[30px] ">
             <svg
@@ -94,16 +113,16 @@ function CardDetail() {
         {/* top */}
         <div className="flex justify-between items-center lg:flex-row flex-col lg:p-0 px-[30px]">
           {/* left  */}
-          <div className="lg:w-[802.1px] lg:min-h-[398.9px] bg-white rounded-[40px] p-[39px] overflow-y-auto">
-            <img src="" className="h-[41.8px]" alt="" />
-            <h1 className="font-semibold text-[28px]">{card.title}</h1>
-            <p>{card.description_uz}</p>
-          </div>
+          <motion.div initial="hidden" whileInView="visible" className="lg:w-[802.1px] lg:min-h-[398.9px] bg-white rounded-[40px] p-[39px] overflow-y-auto">
+            <img src="" className="h-[41.8px]" alt="" />  
+            <motion.h1 variants={cardAnimation} custom={1} className="font-semibold text-[28px]">{card.title}</motion.h1>
+            <motion.p variants={cardAnimation} custom={2}>{card.description_uz}</motion.p>
+          </motion.div>
           {/* left  */}
           {/* right  */}
-          <div className="mb-[50px]">
-            <img src={detail_anim} className="max-h-[400px]" alt="" />
-          </div>
+          <motion.div initial="hidden" whileInView="visible" className="mb-[50px]">
+            <motion.img custom={2} variants={cardAnimation2} src={detail_anim} className="max-h-[400px]"  alt="" />
+          </motion.div>
           {/* right  */}
         </div>
 
@@ -112,7 +131,7 @@ function CardDetail() {
           <Swiper
             breakpoints={{
               0: { slidesPerView: 1 }, // Ширина экрана 0px и выше
-              450: { slidesPerView: 2 }, // Ширина экрана 620px и выше
+              480: { slidesPerView: 2 }, // Ширина экрана 620px и выше
               850: { slidesPerView: 3 }, // Ширина экрана 620px и выше
             }}
             spaceBetween={30}
@@ -125,7 +144,7 @@ function CardDetail() {
             {data2.map((item, index, card) => (
               <SwiperSlide
                 key={item.id}
-                className="mb-[40px] w-[340px] min-h-[300.2px] rounded-[40px] p-[30px] overflow-hidden  bg-[#737678] "
+                className="select-none   mb-[40px] w-[340px] min-h-[300.2px] rounded-[40px] p-[30px] overflow-hidden  bg-[#737678] "
               >
                 {/* <img className='h-[73.6px] '  src={item.icon} alt="icon" /> */}
                 <div className="cursor-pointer">
@@ -136,10 +155,10 @@ function CardDetail() {
 
                     <TruncatedText text={item.description_uz} maxLength={100} />
                   </div>
-                  <div className="md:mt-[20%] mt-[50px]">
+                  <div className="md:mt-[20%] mt-[50px] w-[250px] inline-block h-[50px] py-2 bg-[#1a2529] active:opacity-15 hover:bg-[#02c37e] hover:text-[#1a2529] text-[#02c37e]  rounded-full">
                     <Link
                       to={`../card/${item.id}`}
-                      className=" text-[#02c37e] bg-[#1a2529] font-semibold text-[14px] mt-[30px] p-3 hover:p-4 ho rounded-full"
+                      className="  font-semibold text-[14px] mt-[30px] p-3 "
                     >
                       BATAFSIL
                     </Link>

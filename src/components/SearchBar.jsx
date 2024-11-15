@@ -63,8 +63,8 @@ function SearchBar({ setResults }) {
                 onChange={(e) => handleChange(e.target.value)}
                 className="focus:outline-none lg:w-[456px] border-none"
                 type="text"
-                name="search"
-                placeholder={isWideScreen ? 'Qidirish... (Ctrl + K)' : 'Qidirish...'}
+                name="search" 
+                placeholder={isWideScreen ? 'Qidirish... (Ctrl + K)' : 'Qidirish...'} 
             />
             <button className="flex">
                 <a href=""><CiSearch /></a>
