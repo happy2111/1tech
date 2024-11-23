@@ -1,8 +1,6 @@
 import { useParams } from "react-router-dom";
-import { data } from "../json/data";
 import detail_anim from "../assets/detail_anim.gif";
 import { Link } from "react-router-dom";
-import { FiArrowLeft } from "react-icons/fi";
 import ScrollToTop from "../ScrollToTop";
 import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -13,19 +11,39 @@ import "swiper/css/pagination";
 import { motion } from 'framer-motion' 
 function CardDetail() {
   // ****fetching
-  const [data2, setData] = useState([]);
+  const [data2, setData ] = useState([]);
+  const url = `https://onetec.pythonanywhere.com/articles/`
 
   useEffect(() => {
-    fetch("https://onetec.pythonanywhere.com/articles/")
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data.results);
-      });
+    const fetchAsync = async () => {
+      try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error("Error loading data");
+        const data = await response.json(); 
+        setData(data)
+        // console.log(data);
+      }catch (error) {
+        console.log("Error: ", error);
+      }
+    }
+
+    fetchAsync();
   }, []);
+  
+
+
+  // useEffect(() => {
+  //   fetch("https://onetec.pythonanywhere.com/articles/")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setData(data.results);
+  //     });
+  // }, []);
 
   const { id } = useParams();
   const card = data2.find((item) => item.id === parseInt(id));
-
+  console.log(card);
+  
   if (!card)
     return (
       <div className="h-lvh">
@@ -85,12 +103,52 @@ function CardDetail() {
   const cardAnimation2 = {
     hidden: { opacity: 0, x: 50 },
     visible: custom => ({
-      opacity: 1,
+      opacity: 1, 
       x: 0,
       // transition: {delay: custom * 0.2,type: "spring"} 
       transition: {delay: custom * 0.4, type: "spring", stiffness: 80,}
     }),
   }
+
+
+
+
+
+  // const { default: axios } = require('axios'); 
+
+  // Init a bigData array to push new data on each iteration
+  // const bigData = [];
+  
+  // async function fetchAllPaginateData(
+  //     pageKey = 0 /** init by default page index 0 */,
+  // ) {
+  //     try {
+  //         const fetchURL = `https://onetec.pythonanywhere.com/articles/?page=${pageKey}`;
+  //         const response = await axios.get(fetchURL);
+  //         const { data } = response;
+  //         const { totalPages } = data; // Your api should give you a total page count, result or something to setup your iteration
+  
+  //         bigData.push(data); // push on big data response data
+  
+  //         // if current page isn't the last, call the fetch feature again, with page + 1
+  //         if (
+  //             pageKey < totalPages &&
+  //             pageKey < 10 // (this is a test dev condition to limit for 10 result) */
+  //         ) {
+  //             pageKey++;
+  //             await new Promise((resolve) => setTimeout(resolve, 200)); // setup a sleep depend your api request/second requirement.
+  //             console.debug(pageKey, '/', totalPages);
+  //             return await fetchAllPaginateData(pageKey);
+  //         }
+  
+  //         console.clear();
+  //         return console.info('Data complete.');
+  //     } catch (err) {
+  //         console.error(err);
+  //     }
+  // };
+  // fetchAllPaginateData();
+
   return (
     <div className="md:h-[120vh] bg-[#ccf3e5] pt-[28px] ">
       <ScrollToTop />
@@ -136,7 +194,9 @@ function CardDetail() {
             }}
             spaceBetween={30}
             pagination={{
-              clickable: true,
+              type: 'fraction',
+              // clickable: true,
+              // dynamicMainBullets: 4
             }}
             modules={[Pagination]}
             className="mySwiper "

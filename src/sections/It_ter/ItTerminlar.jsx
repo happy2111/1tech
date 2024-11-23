@@ -7,23 +7,47 @@ import { ReactTyped } from "react-typed";
 
 function ItTerminlar() {
   const add_text = "Eng ko’p qidirilganlar < >";
+  const [data2, setData2] = useState([]);
 
-  const [data, setData] = useState([]);
+  let limit = 3
+  const url = `https://onetec.pythonanywhere.com/articles/top-searched/?limit=${limit}`
 
   useEffect(() => {
-    fetch("https://onetec.pythonanywhere.com/articles/")
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data.results);
-      });
-  }, []);
+    const fetchAsync = async () => {
+      try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error("Ошибка при загрузке данных");
+        const data = await response.json();
+        setData2(data)
+      }catch (error) {
+        console.error("Ошибка:", error);
+      }
+    };
+    fetchAsync();
+  }, [])
 
-  // console.log(data);
+
+
+
+  // useEffect(() => {
+  //   fetch("https://onetec.pythonanywhere.com/articles/")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setData(data.results);
+  //     });
+  //   fetch("https://onetec.pythonanywhere.com/articles/top-searched/?limit=3")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setData2(data)
+  //     })
+  // }, []);
+
+  
+
 
   const TruncatedText = ({ text, maxLength }) => {
     const truncated =
       text.length > maxLength ? text.slice(0, maxLength) + "..." : text;
-
     return <p className="text-[14px] text-white">{truncated}</p>;
   };
 
@@ -91,11 +115,11 @@ function ItTerminlar() {
           whileInView="visible"
           className="flex flex-wrap lg:justify-between justify-evenly lg:mt-[30px] mt-[50px] md:p-0 px-[30px] lg:mb-[50px] "
         >
-          {data.slice(0, 3).map((item, index, card) => (
+          {data2.slice(0, 3).map((item, index, card) => (
             <motion.div
               variants={cardAnimation}
               custom={1}
-              key={item.id}
+              key={item.id} 
               className="hover:h-[330px] mb-[40px] w-[367px] h-[320.2px] rounded-[40px] p-[30px] overflow-hidden  bg-[#737678] "
             >
               <img className="h-[73.6px] ml-[-20px]" src={icon} alt="icon" />

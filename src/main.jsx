@@ -12,9 +12,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App/>,
-    
   },
-  // <Route path="/card/:id" element={<CardDetail />} />
   {
     path: "/card/:id",
     element: <CardDetail/>

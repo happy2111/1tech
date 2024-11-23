@@ -2,18 +2,11 @@ import {
   Disclosure,
   DisclosureButton,
   DisclosurePanel,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuItems,
 } from "@headlessui/react";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { CiSearch } from "react-icons/ci";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useState, useEffect } from "react";
 import { Link } from "react-scroll";
 import SearchBar from "../../components/SearchBar";
-import SearchResultList from "../../components/SearchResultList";
-import logo from "../../assets/logo.png";
 import logo2 from "../../assets/logo2.png";
 
 const navigation = [
@@ -44,26 +37,11 @@ export default function Navbar() {
     };
   }, []);
 
-  const [search, setSearch] = useState("");
-
   const [initial, setState] = useState(false);
   function onClickHandler() {
     setState(!initial);
   }
 
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    fetch("https://onetec.pythonanywhere.com/articles/")
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data.results);
-      });
-  }, []);
-
-  // console.log(data);
-
-  const [results, setResults] = useState([]);
 
   return (
     <Disclosure
@@ -110,13 +88,8 @@ export default function Navbar() {
             </div>
             {/* Logo-end  */}
             {/* search  */}
-            <div className="relative rounded-full md:ml-[15px] h-[39.8px] px-5 bg-white overflow-hidden lg:ml-[69px] mr-[15px]  flex items-center ">
-              <SearchBar setResults={setResults} />
-              {/* <input onChange={(e) => setSearch(e.target.value)} className='focus:outline-none lg:w-[456px] border-none' type="text"  name="search" placeholder='Qidiruv...' /> */}
-              {/* <button><a href=""><CiSearch /></a></button>    */}
-            </div>
             <div>
-              <SearchResultList results={results} />
+              <SearchBar/>
             </div>
             {/* search-ends  */}
             <div className="hidden sm:ml-auto sm:block">

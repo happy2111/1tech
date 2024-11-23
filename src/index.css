@@ -3,8 +3,34 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #02c37e transparnet;
+}
 
-/* From Uiverse.io by adamgiebl */ 
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 16px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #02c37e;
+  border-radius: 21px;
+  border: none;
+}
+.shadow {
+  -webkit-box-shadow: 4px 4px 63px 0px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 4px 4px 63px 0px rgba(34, 60, 80, 0.2);
+  box-shadow: 4px 4px 63px 0px rgba(34, 60, 80, 0.2);
+}
+
+/* From Uiverse.io by adamgiebl */
 .dots-container {
   display: flex;
   align-items: center;
@@ -74,38 +100,37 @@
   background-color: #fcfcff;
 }
 .typed-cursor {
-  
   color: #02c37e !important;
 }
 .detail__back-btn button {
-    display: flex;
-    height: 3em;
-    width: 100px;
-    align-items: center;
-    justify-content: center;
-    background-color: #02c37e;
-    border-radius: 40px;
-    letter-spacing: 1px;
-    transition: all 0.2s linear;
-    cursor: pointer;
-    border: none;
-    background: #fff;
+  display: flex;
+  height: 3em;
+  width: 100px;
+  align-items: center;
+  justify-content: center;
+  background-color: #02c37e;
+  border-radius: 40px;
+  letter-spacing: 1px;
+  transition: all 0.2s linear;
+  cursor: pointer;
+  border: none;
+  background: #fff;
 }
-.detail__back-btn  button > svg {
+.detail__back-btn button > svg {
   margin-right: 5px;
   margin-left: 5px;
   font-size: 20px;
   transition: all 0.4s ease-in;
- }
- .detail__back-btn button:hover > svg {
+}
+.detail__back-btn button:hover > svg {
   font-size: 1.2em;
   transform: translateX(-5px);
- }
- .detail__back-btn button:hover {
+}
+.detail__back-btn button:hover {
   box-shadow: 9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff;
   transform: translateY(-2px);
- }
- 
+}
+
 .navbar__logo::after {
   content: "";
   position: absolute;
@@ -138,7 +163,7 @@
     width: 50px;
     right: 7px;
   }
-  .navbar__logo img{
+  .navbar__logo img {
     padding: 7px;
     border: 1px solid black;
   }
@@ -149,3 +174,5 @@
     width: 240px !important;
   }
 }
+
+
