@@ -42,7 +42,6 @@ export default function Navbar() {
     setState(!initial);
   }
 
-
   return (
     <Disclosure
       as="nav"
@@ -89,7 +88,7 @@ export default function Navbar() {
             {/* Logo-end  */}
             {/* search  */}
             <div>
-              <SearchBar/>
+              <SearchBar />
             </div>
             {/* search-ends  */}
             <div className="hidden sm:ml-auto sm:block">

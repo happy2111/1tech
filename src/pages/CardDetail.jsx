@@ -8,29 +8,27 @@ import "./styles.css";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import { motion } from 'framer-motion' 
+import { motion } from "framer-motion";
 function CardDetail() {
   // ****fetching
-  const [data2, setData ] = useState([]);
-  const url = `https://onetec.pythonanywhere.com/articles/`
+  const [data2, setData] = useState([]);
+  const url = `https://onetec.pythonanywhere.com/articles/`;
 
   useEffect(() => {
     const fetchAsync = async () => {
       try {
         const response = await fetch(url);
         if (!response.ok) throw new Error("Error loading data");
-        const data = await response.json(); 
-        setData(data)
+        const data = await response.json();
+        setData(data);
         // console.log(data);
-      }catch (error) {
+      } catch (error) {
         console.log("Error: ", error);
       }
-    }
+    };
 
     fetchAsync();
   }, []);
-  
-
 
   // useEffect(() => {
   //   fetch("https://onetec.pythonanywhere.com/articles/")
@@ -43,7 +41,7 @@ function CardDetail() {
   const { id } = useParams();
   const card = data2.find((item) => item.id === parseInt(id));
   console.log(card);
-  
+
   if (!card)
     return (
       <div className="h-lvh">
@@ -90,35 +88,30 @@ function CardDetail() {
   // }, []);
   // ****swiper chenger
 
-
   const cardAnimation = {
     hidden: { opacity: 0, x: -50 },
-    visible: custom => ({
+    visible: (custom) => ({
       opacity: 1,
       x: 0,
-      // transition: {delay: custom * 0.2,type: "spring"} 
-      transition: {delay: custom * 0.4, type: "spring", stiffness: 80,}
+      // transition: {delay: custom * 0.2,type: "spring"}
+      transition: { delay: custom * 0.4, type: "spring", stiffness: 80 },
     }),
-  }
+  };
   const cardAnimation2 = {
     hidden: { opacity: 0, x: 50 },
-    visible: custom => ({
-      opacity: 1, 
+    visible: (custom) => ({
+      opacity: 1,
       x: 0,
-      // transition: {delay: custom * 0.2,type: "spring"} 
-      transition: {delay: custom * 0.4, type: "spring", stiffness: 80,}
+      // transition: {delay: custom * 0.2,type: "spring"}
+      transition: { delay: custom * 0.4, type: "spring", stiffness: 80 },
     }),
-  }
+  };
 
-
-
-
-
-  // const { default: axios } = require('axios'); 
+  // const { default: axios } = require('axios');
 
   // Init a bigData array to push new data on each iteration
   // const bigData = [];
-  
+
   // async function fetchAllPaginateData(
   //     pageKey = 0 /** init by default page index 0 */,
   // ) {
@@ -127,9 +120,9 @@ function CardDetail() {
   //         const response = await axios.get(fetchURL);
   //         const { data } = response;
   //         const { totalPages } = data; // Your api should give you a total page count, result or something to setup your iteration
-  
+
   //         bigData.push(data); // push on big data response data
-  
+
   //         // if current page isn't the last, call the fetch feature again, with page + 1
   //         if (
   //             pageKey < totalPages &&
@@ -140,7 +133,7 @@ function CardDetail() {
   //             console.debug(pageKey, '/', totalPages);
   //             return await fetchAllPaginateData(pageKey);
   //         }
-  
+
   //         console.clear();
   //         return console.info('Data complete.');
   //     } catch (err) {
@@ -171,15 +164,37 @@ function CardDetail() {
         {/* top */}
         <div className="flex justify-between items-center lg:flex-row flex-col lg:p-0 px-[30px]">
           {/* left  */}
-          <motion.div initial="hidden" whileInView="visible" className="lg:w-[802.1px] lg:min-h-[398.9px] bg-white rounded-[40px] p-[39px] overflow-y-auto">
-            <img src="" className="h-[41.8px]" alt="" />  
-            <motion.h1 variants={cardAnimation} custom={1} className="font-semibold text-[28px]">{card.title}</motion.h1>
-            <motion.p variants={cardAnimation} custom={2}>{card.description_uz}</motion.p>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            className="lg:w-[802.1px] lg:min-h-[398.9px] bg-white rounded-[40px] p-[39px] overflow-y-auto"
+          >
+            <img src="" className="h-[41.8px]" alt="" />
+            <motion.h1
+              variants={cardAnimation}
+              custom={1}
+              className="font-semibold text-[28px]"
+            >
+              {card.title}
+            </motion.h1>
+            <motion.p variants={cardAnimation} custom={2}>
+              {card.description_uz}
+            </motion.p>
           </motion.div>
           {/* left  */}
           {/* right  */}
-          <motion.div initial="hidden" whileInView="visible" className="mb-[50px]">
-            <motion.img custom={2} variants={cardAnimation2} src={detail_anim} className="max-h-[400px]"  alt="" />
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            className="mb-[50px]"
+          >
+            <motion.img
+              custom={2}
+              variants={cardAnimation2}
+              src={detail_anim}
+              className="max-h-[400px]"
+              alt=""
+            />
           </motion.div>
           {/* right  */}
         </div>
@@ -194,7 +209,7 @@ function CardDetail() {
             }}
             spaceBetween={30}
             pagination={{
-              type: 'fraction',
+              type: "fraction",
               // clickable: true,
               // dynamicMainBullets: 4
             }}
