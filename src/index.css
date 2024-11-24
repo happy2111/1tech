@@ -34,10 +34,12 @@
 
 
 /* From Uiverse.io by Nawsome */ 
-.boxes {
+.card-d-loader {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.boxes {
   --size: 32px;
   --duration: 800ms;
   height: calc(var(--size) * 2);

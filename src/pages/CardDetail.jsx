@@ -34,8 +34,8 @@ function CardDetail() {
 
   if (!card)
     return (
-      <div className="h-lvh w-full relative">
-        <div class="boxes absolute left-[50%] translate-x-[-50%] top-[50%] translate-y-[50%]">
+      <div className="card-d-loader h-lvh lg:w-full relative">
+        <div class="boxes">
           <div class="box">
             <div></div>
             <div></div>
@@ -166,7 +166,7 @@ function CardDetail() {
             {data2.map((item, index, card) => (
               <SwiperSlide
                 key={item.id}
-                className="cursor-grab relative select-none mb-[40px] w-[340px] h-[370.2px] rounded-[40px] p-[30px] overflow-hidden  bg-[#737678] "
+                className="cursor-grab active:cursor-grabbing relative select-none mb-[40px] w-[340px] h-[370.2px] rounded-[40px] p-[30px] overflow-hidden  bg-[#737678] "
               >
                 <div className="" style={{ userSelect: "none" }}>
                   <div>
