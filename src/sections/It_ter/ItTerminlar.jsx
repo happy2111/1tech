@@ -4,13 +4,14 @@ import { Link } from "react-router-dom";
 import icon from "../../assets/icon.png";
 import { delay, motion } from "framer-motion";
 import { ReactTyped } from "react-typed";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEye } from "@fortawesome/free-regular-svg-icons";
 function ItTerminlar() {
   const add_text = "Eng ko’p qidirilganlar < >";
   const [data2, setData2] = useState([]);
 
-  let limit = 3
-  const url = `https://onetec.pythonanywhere.com/articles/top-searched/?limit=${limit}`
+  let limit = 3;
+  const url = `https://onetec.pythonanywhere.com/articles/top-searched/?limit=${limit}`;
 
   useEffect(() => {
     const fetchAsync = async () => {
@@ -18,32 +19,13 @@ function ItTerminlar() {
         const response = await fetch(url);
         if (!response.ok) throw new Error("Ошибка при загрузке данных");
         const data = await response.json();
-        setData2(data)
-      }catch (error) {
+        setData2(data);
+      } catch (error) {
         console.error("Ошибка:", error);
       }
     };
     fetchAsync();
-  }, [])
-
-
-
-
-  // useEffect(() => {
-  //   fetch("https://onetec.pythonanywhere.com/articles/")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setData(data.results);
-  //     });
-  //   fetch("https://onetec.pythonanywhere.com/articles/top-searched/?limit=3")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setData2(data)
-  //     })
-  // }, []);
-
-  
-
+  }, []);
 
   const TruncatedText = ({ text, maxLength }) => {
     const truncated =
@@ -119,10 +101,19 @@ function ItTerminlar() {
             <motion.div
               variants={cardAnimation}
               custom={1}
-              key={item.id} 
-              className="hover:h-[330px] mb-[40px] w-[367px] h-[320.2px] rounded-[40px] p-[30px] overflow-hidden  bg-[#737678] "
+              key={item.id}
+              className="relative mb-[40px] w-[367px] h-[390px] rounded-[40px] p-[30px] overflow-hidden  bg-[#737678] "
             >
-              <img className="h-[73.6px] ml-[-20px]" src={icon} alt="icon" />
+              <div className="flex justify-between items-start">
+                <img className="h-[73.6px] ml-[-20px]" src={icon} alt="icon" />
+                <div className="flex items-center">
+                  <FontAwesomeIcon icon={faEye} size="lg" style={{color: "#63E6BE",}} />
+                  <p className="text-white ml-2">
+                    {item.search_count}
+                  </p>
+                </div>
+              </div>
+
               <h1 className="text-[25px] font-bold text-[#1dcd8d] mt-[11px]">
                 {item.title}
               </h1>
@@ -130,13 +121,15 @@ function ItTerminlar() {
                             {item.description_uz}
                         </p> */}
               <TruncatedText text={item.description_uz} maxLength={100} />
-              <div className="mt-6">
-                <Link
-                  to={`/card/${item.id}`}
-                  className=" text-[#02c37e] bg-[#1a2529]  hover:p-3 font-semibold text-[14px] mt-[30px] p-2 rounded-full"
-                >
-                  BATAFSIL
-                </Link>
+
+
+              <div className="absolute bottom-6 left-[50%] translate-x-[-50%]">
+                  <Link
+                    to={`/card/${item.id}`}
+                    className="w-[250px] flex justify-center items-center h-[50px] bg-[#1a2529] active:opacity-15 hover:bg-[#02c37e] hover:text-[#1a2529] text-[#02c37e] rounded-full font-semibold text-[14px] m-0 p-0"
+                  >
+                    BATAFSIL
+                  </Link>
               </div>
             </motion.div>
           ))}

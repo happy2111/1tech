@@ -10,7 +10,6 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { motion } from "framer-motion";
 function CardDetail() {
-  // ****fetching
   const [data2, setData] = useState([]);
   const url = `https://onetec.pythonanywhere.com/articles/`;
 
@@ -21,7 +20,6 @@ function CardDetail() {
         if (!response.ok) throw new Error("Error loading data");
         const data = await response.json();
         setData(data);
-        // console.log(data);
       } catch (error) {
         console.log("Error: ", error);
       }
@@ -30,29 +28,39 @@ function CardDetail() {
     fetchAsync();
   }, []);
 
-  // useEffect(() => {
-  //   fetch("https://onetec.pythonanywhere.com/articles/")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setData(data.results);
-  //     });
-  // }, []);
-
   const { id } = useParams();
   const card = data2.find((item) => item.id === parseInt(id));
   console.log(card);
 
   if (!card)
     return (
-      <div className="h-lvh">
-        {" "}
-        <section class="dots-container">
-          <div class="dot"></div>
-          <div class="dot"></div>
-          <div class="dot"></div>
-          <div class="dot"></div>
-          <div class="dot"></div>
-        </section>
+      <div className="h-lvh w-full relative">
+        <div class="boxes absolute left-[50%] translate-x-[-50%] top-[50%] translate-y-[50%]">
+          <div class="box">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+          <div class="box">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+          <div class="box">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+          <div class="box">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
       </div>
     );
   // ****fetching
@@ -65,35 +73,11 @@ function CardDetail() {
 
     return <p className="text-[14px] text-black curlor-pointer">{truncated}</p>;
   };
-  // ****text
-
-  // ****swiper chenger
-  // const [slidesPerView, setSlidesPerView] = useState(3);
-
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     setSlidesPerView(window.innerWidth <= 620 ? 1 : 3);
-  //   };
-
-  //   // Установить значение при загрузке компонента
-  //   handleResize();
-
-  //   // Обновлять значение при изменении ширины экрана
-  //   window.addEventListener('resize', handleResize);
-
-  //   // Удалить обработчик при размонтировании компонента
-  //   return () => {
-  //     window.removeEventListener('resize', handleResize);
-  //   };
-  // }, []);
-  // ****swiper chenger
-
   const cardAnimation = {
     hidden: { opacity: 0, x: -50 },
     visible: (custom) => ({
       opacity: 1,
       x: 0,
-      // transition: {delay: custom * 0.2,type: "spring"}
       transition: { delay: custom * 0.4, type: "spring", stiffness: 80 },
     }),
   };
@@ -102,45 +86,9 @@ function CardDetail() {
     visible: (custom) => ({
       opacity: 1,
       x: 0,
-      // transition: {delay: custom * 0.2,type: "spring"}
       transition: { delay: custom * 0.4, type: "spring", stiffness: 80 },
     }),
   };
-
-  // const { default: axios } = require('axios');
-
-  // Init a bigData array to push new data on each iteration
-  // const bigData = [];
-
-  // async function fetchAllPaginateData(
-  //     pageKey = 0 /** init by default page index 0 */,
-  // ) {
-  //     try {
-  //         const fetchURL = `https://onetec.pythonanywhere.com/articles/?page=${pageKey}`;
-  //         const response = await axios.get(fetchURL);
-  //         const { data } = response;
-  //         const { totalPages } = data; // Your api should give you a total page count, result or something to setup your iteration
-
-  //         bigData.push(data); // push on big data response data
-
-  //         // if current page isn't the last, call the fetch feature again, with page + 1
-  //         if (
-  //             pageKey < totalPages &&
-  //             pageKey < 10 // (this is a test dev condition to limit for 10 result) */
-  //         ) {
-  //             pageKey++;
-  //             await new Promise((resolve) => setTimeout(resolve, 200)); // setup a sleep depend your api request/second requirement.
-  //             console.debug(pageKey, '/', totalPages);
-  //             return await fetchAllPaginateData(pageKey);
-  //         }
-
-  //         console.clear();
-  //         return console.info('Data complete.');
-  //     } catch (err) {
-  //         console.error(err);
-  //     }
-  // };
-  // fetchAllPaginateData();
 
   return (
     <div className="md:h-[120vh] bg-[#ccf3e5] pt-[28px] ">
@@ -207,11 +155,10 @@ function CardDetail() {
               480: { slidesPerView: 2 }, // Ширина экрана 620px и выше
               850: { slidesPerView: 3 }, // Ширина экрана 620px и выше
             }}
+            autoHeight={false}
             spaceBetween={30}
             pagination={{
               type: "fraction",
-              // clickable: true,
-              // dynamicMainBullets: 4
             }}
             modules={[Pagination]}
             className="mySwiper "
@@ -219,10 +166,9 @@ function CardDetail() {
             {data2.map((item, index, card) => (
               <SwiperSlide
                 key={item.id}
-                className="select-none   mb-[40px] w-[340px] min-h-[300.2px] rounded-[40px] p-[30px] overflow-hidden  bg-[#737678] "
+                className="cursor-grab relative select-none mb-[40px] w-[340px] h-[370.2px] rounded-[40px] p-[30px] overflow-hidden  bg-[#737678] "
               >
-                {/* <img className='h-[73.6px] '  src={item.icon} alt="icon" /> */}
-                <div className="cursor-pointer">
+                <div className="" style={{ userSelect: "none" }}>
                   <div>
                     <h1 className="text-[25px] font-bold text-[#1dcd8d] mt-[11px]">
                       {item.title}
@@ -230,14 +176,12 @@ function CardDetail() {
 
                     <TruncatedText text={item.description_uz} maxLength={100} />
                   </div>
-                  <div className="md:mt-[20%] mt-[50px] w-[250px] inline-block h-[50px] py-2 bg-[#1a2529] active:opacity-15 hover:bg-[#02c37e] hover:text-[#1a2529] text-[#02c37e]  rounded-full">
                     <Link
                       to={`../card/${item.id}`}
-                      className="  font-semibold text-[14px] mt-[30px] p-3 "
+                      className="absolute left-[50%] translate-x-[-50%] bottom-9 w-[250px] flex justify-center items-center h-[50px] bg-[#1a2529] active:opacity-15 hover:bg-[#02c37e] hover:text-[#1a2529] text-[#02c37e]  rounded-full font-semibold text-[14px] "
                     >
                       BATAFSIL
                     </Link>
-                  </div>
                 </div>
               </SwiperSlide>
             ))}
@@ -245,9 +189,6 @@ function CardDetail() {
         </div>
         {/* bottom */}
       </div>
-
-      {/* <h1>{card.title}</h1>
-      <p>{card.detail}</p> */}
     </div>
   );
 }
