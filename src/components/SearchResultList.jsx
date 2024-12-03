@@ -17,7 +17,7 @@ function SearchResultList({ searchData, isTableVisible }) {
               </tr>
             ))
           ) : (
-            <p>Нет результатов</p>
+            <p></p>
           )}
         </tbody>
       </table>

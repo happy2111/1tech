@@ -20,7 +20,7 @@ function SearchBar() {
     setIsLoading(true)
     try {
       const response = await fetch(url);
-      if (!response.ok) throw new Error("Ошибка при загрузке данных");
+      if (!response.ok) throw new Error("Error faching data");
       const data = await response.json();
       setSearchData(data);
     } catch (error) {
@@ -72,7 +72,6 @@ function SearchBar() {
     };
   }, []);
 
-  // Скрытие таблицы при клике вне контейнера
   const [isTableVisible, setTableVisible] = useState(false);
   const containerRef = useRef(null);
 

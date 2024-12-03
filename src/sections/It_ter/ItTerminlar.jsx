@@ -102,7 +102,7 @@ function ItTerminlar() {
               variants={cardAnimation}
               custom={1}
               key={item.id}
-              className="relative mb-[40px] w-[367px] h-[390px] rounded-[40px] p-[30px] overflow-hidden  bg-[#737678] "
+              className="itTerminlar-card relative mb-[40px] w-[367px] h-[400px] rounded-[40px] p-[30px]  overflow-hidden  bg-[#737678] "
             >
               <div className="flex justify-between items-start">
                 <img className="h-[73.6px] ml-[-20px]" src={icon} alt="icon" />
@@ -126,7 +126,7 @@ function ItTerminlar() {
               <div className="absolute bottom-6 left-[50%] translate-x-[-50%]">
                   <Link
                     to={`/card/${item.id}`}
-                    className="w-[250px] flex justify-center items-center h-[50px] bg-[#1a2529] active:opacity-15 hover:bg-[#02c37e] hover:text-[#1a2529] text-[#02c37e] rounded-full font-semibold text-[14px] m-0 p-0"
+                    className="card_detial2 w-[250px] flex justify-center items-center h-[50px] bg-[#1a2529] card_detialactive:opacity-15 hover:bg-[#02c37e] hover:text-[#1a2529] text-[#02c37e] rounded-full font-semibold text-[14px] "
                   >
                     BATAFSIL
                   </Link>

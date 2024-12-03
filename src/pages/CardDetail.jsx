@@ -166,11 +166,11 @@ function CardDetail() {
             {data2.map((item, index, card) => (
               <SwiperSlide
                 key={item.id}
-                className="cursor-grab active:cursor-grabbing relative select-none mb-[40px] w-[340px] h-[370.2px] rounded-[40px] p-[30px] overflow-hidden  bg-[#737678] "
+                className="cursor-grab active:curor-gra relative select-none mb-[40px] w-[340px] h-[370.2px] rounded-[40px] p-[30px] overflow-hidden  bg-[#737678] "
               >
                 <div className="" style={{ userSelect: "none" }}>
-                  <div>
-                    <h1 className="text-[25px] font-bold text-[#1dcd8d] mt-[11px]">
+                  <div >
+                    <h1 className="text-[25px] font-bold text-[#1dcd8d]  mt-[11px]">
                       {item.title}
                     </h1>
 
@@ -178,7 +178,7 @@ function CardDetail() {
                   </div>
                     <Link
                       to={`../card/${item.id}`}
-                      className="absolute left-[50%] translate-x-[-50%] bottom-9 w-[250px] flex justify-center items-center h-[50px] bg-[#1a2529] active:opacity-15 hover:bg-[#02c37e] hover:text-[#1a2529] text-[#02c37e]  rounded-full font-semibold text-[14px] "
+                      className="card_detial absolute left-[50%] translate-x-[-50%] bottom-9 w-[250px] flex justify-center items-center h-[50px] bg-[#1a2529] active:opacity-15 hover:bg-[#02c37e] hover:text-[#1a2529] text-[#02c37e]  rounded-full font-semibold text-[14px] "
                     >
                       BATAFSIL
                     </Link>
